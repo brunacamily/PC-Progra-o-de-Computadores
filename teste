@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int minCostClimbingStairs(int* cost, int costSize);
+
+int main(){
+    int *cost, tam = 3;
+
+    cost = (int*) malloc ((tam)*(sizeof(int)));
+
+    minCostClimbingStairs(cost, tam);
+
+}
+
+int minCostClimbingStairs(int *cost, int costSize){
+    int **passo1, **teste, p;
+    int guarda;
+    passo1 = *cost;
+    teste = *passo1++;
+    for(p=0; p= costSize; p++){
+        if(*passo1 > *teste){
+            guarda += **passo1;
+        }else{
+            guarda += **teste;
+        }
+        passo1 = *teste++;
+    }
+    costSize = guarda;
+    return costSize;
+
+
+}
